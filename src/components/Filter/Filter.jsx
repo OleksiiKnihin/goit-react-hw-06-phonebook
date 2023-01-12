@@ -1,21 +1,25 @@
-import propTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filterSlice';
 import css from './Filter.module.css';
 
-export const Filter = ({ filter, handleChange }) => (
-  <div>
-    <label>Find contacts by Name </label>
-    <input
-      className={css.filter__name}
-      type="text"
-      name="filter"
-      placeholder="Anna"
-      value={filter}
-      onChange={handleChange}
-    />
-  </div>
-);
+export const Filter = () => {
+  const dispatch = useDispatch();
 
-Filter.propTypes = {
-  filter: propTypes.string,
-  handleChange: propTypes.func.isRequired,
+  const handleChange = event => {
+    const { value } = event.target;
+    dispatch(setFilter(value));
+  };
+
+  return (
+    <div>
+      <label>Find contacts by Name </label>
+      <input
+        className={css.filter__name}
+        type="text"
+        name="filter"
+        placeholder="Angelina"
+        onChange={handleChange}
+      />
+    </div>
+  );
 };
