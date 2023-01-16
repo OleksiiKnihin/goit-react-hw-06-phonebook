@@ -28,7 +28,7 @@ export const ContactList = () => {
           <button
             type="button"
             className={css.contactList__btn}
-            onClick={() => dispatch(deleteContact(id))}
+            onClick={() => dispatch(deleteContact(contact.id))}
           >
             Delete
           </button>

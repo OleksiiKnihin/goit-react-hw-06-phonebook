@@ -15,8 +15,9 @@ import {
 } from 'redux-persist';
 
 const persistConfig = {
-  key: 'counter',
+  key: 'contacts',
   storage,
+  blacklist: ['filter'],
 };
 
 const reducers = combineReducers({

@@ -21,9 +21,7 @@ export const ContactForm = () => {
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    const form = event.currentTarget;
     handleSubmit({ name: name, number: number });
-    form.reset();
   };
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
@@ -32,13 +30,14 @@ export const ContactForm = () => {
     const id = nanoid();
     const name = event.name;
     const number = event.number;
- 
 
     if (contacts.findIndex(contact => name === contact.name) !== -1) {
       alert(`${name} is already in contacts.`);
     } else {
       dispatch(addContact(id, name, number));
     }
+    setName('');
+    setNumber('');
   };
 
   return (
